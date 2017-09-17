@@ -13,7 +13,8 @@ body {
 	font-color: $Safari-Chrome-border-color;
 }
 
-button {
+button,
+.button {
 	@include flex(column, flex-end);
 	
 	display: flex;

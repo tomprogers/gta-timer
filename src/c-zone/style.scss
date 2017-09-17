@@ -19,15 +19,20 @@
 
 	.Zone-buttons {
 		display: grid;
+		justify-content: center;
+		align-content: top;
 		justify-items: stretch;
 		align-items: stretch;
-		margin: 4.25vw auto;
+		margin: 0 auto;
+		padding: 4.24vw 0;
 		
 		grid-template-columns: repeat(3, 22.5vw);
 		grid-template-rows: repeat(2, 17.25vw);
 		grid-gap: 4.25vw;
 		
-		button {
+		button,
+		.button {
+			text-align: center;
 			letter-spacing: 0.05em;
 		}
 		

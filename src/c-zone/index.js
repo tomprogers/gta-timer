@@ -13,11 +13,11 @@ export default ({ introText , buttonMap , className , ...props }) => (
 			{
 				Object.keys(buttonMap)
 				.map((buttonLocation, i) => (
-					<button key={i} className={buttonLocation}
+					<span key={i} className={C('button', buttonLocation)}
 						onClick={buttonMap[buttonLocation].onClick}
 					>
 						{buttonMap[buttonLocation].text}
-					</button>
+					</span>
 				))
 			}
 		</div>
