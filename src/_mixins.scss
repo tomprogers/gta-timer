@@ -1,0 +1,17 @@
+@mixin debug($color:red, $size:1px) {
+	outline: $size dotted $color;
+}
+
+
+@mixin flex($d:row, $j:flex-start, $a:stretch, $w:nowrap) {
+	display: flex;
+	flex-direction: $d;
+	justify-content: $j;
+	align-items: $a;
+	flex-wrap: $w;
+}
+
+
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
