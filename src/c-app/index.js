@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import C from 'classnames'
 
 import Zone from 'c-zone'
-import './style.scss'
+import './style.css'
 
 
 const DefaultState = {

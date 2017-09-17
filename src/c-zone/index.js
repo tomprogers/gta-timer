@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import C from 'classnames'
 
-import './style.scss'
+import './style.css'
 
 
 export default ({ introText , buttonMap , className , ...props }) => (

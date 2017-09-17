@@ -22,3 +22,6 @@ yarn-error.log*
 
 # Sublime Text
 *.sublime-workspace
+
+# ignore raw CSS
+src/**/*.css
