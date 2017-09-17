@@ -108,7 +108,7 @@ export default class Module extends Component {
 		
 		// class with `zone-active-${zdx}` and `zone-next-${nzdx}` based on transition needs
 		let currentZdx = Object.keys(zones).indexOf(currentZoneName)
-		let nextZdx = Object.keys(zones).indexOf(nextZoneName)
+		let nextZdx = (nextZoneName) ? Object.keys(zones).indexOf(nextZoneName) : null
 		
 		let transitionPhaseClassName = (inTransition)
 			? ZONE_TRANSITION_PHASES[ transitionPhaseIndex ].className
@@ -129,11 +129,16 @@ export default class Module extends Component {
 					data-next-zdx={nextZdx}
 				>
 					{Object.values(zones)
-						.map(({ text , stripe , buttons }, i) => {
+					.map(({ text , stripe , buttons }, i) => {
+						let zoneName = Object.keys(zones)[i]
+						
 						return (
-							<Zone key={i} className={C()}
+							<Zone key={i} className={C(`zone-${zoneName}`)}
 								introText={text}
 								buttonMap={
+									// transform zonefile button format into Zone.buttonMap format
+									// and incorporate button reducers into event handling
+									// this is 70% of the magic of <Module>
 									Object.keys(buttons)
 									.reduce((map, buttonPositionName, b) => {
 										const [ text , buttonReducer ] = buttons[buttonPositionName]
