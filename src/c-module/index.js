@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import C from 'classnames'
 
 import Zone from 'c-zone'
-import './style.css'
+// import './style.css'
 
 /**
  * <Module> implements the zone state lifecycle, and manages transitions between zones
@@ -48,7 +48,7 @@ export default class Module extends Component {
 	}
 	
 	
-	clearTimers = (timers} => {
+	clearTimers = (timers) => {
 		clearTimeout(this.transitionPhaseTimer)
 		clearInterval(this.zoneHeartbeat)
 	}
@@ -128,9 +128,10 @@ export default class Module extends Component {
 					data-current-zdx={currentZdx}
 					data-next-zdx={nextZdx}
 				>
-					{zones.map(({ text, stripe, buttons }, z) => {
+					{Object.values(zones)
+						.map(({ text , stripe , buttons }, i) => {
 						return (
-							<Zone key={z} className={C()}
+							<Zone key={i} className={C()}
 								introText={text}
 								buttonMap={
 									Object.keys(buttons)
