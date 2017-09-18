@@ -31,6 +31,8 @@ button,
 	box-shadow: 0 0 1.25vw 1px rgba($button-shadow-color, 0.85);
 	background: transparent;
 	
+	cursor: pointer;
+	
 	font: inherit;
 	@include text(button);
 	
