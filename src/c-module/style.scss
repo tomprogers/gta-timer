@@ -21,11 +21,10 @@
 	
 	.Module-zones {
 		display: block;
-		position: relative;
 		width: auto;
 		white-space: nowrap;
 		overflow: hidden;
-		transition: transform 0.25s ease-in;
+		perspective: 100vw;
 		
 		.Zone + .Zone {
 			margin-left: 100vw;
@@ -54,14 +53,18 @@
 		height: 56.25vw;
 		white-space: normal;
 		margin: 0;
-		transition: margin 0.5s ease-in 0.25s;
+		transition: transform 0.8s ease-in-out,
+			margin 1s ease-in-out 0.5s;
 	}
 	
 	
 	// zone transitions
 	&.transition {
-		.Module-zones { transform: scale(0.85); }
-		.Zone {}
+		.Module-zones {
+		}
+		.Zone {
+			transform: translateZ(-25vw);
+		}
 	}
 	
 }

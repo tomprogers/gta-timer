@@ -26,11 +26,6 @@
 
 // still unused
 @mixin text($formatName:prompt) {
-	// $formatName == title
-	// $formatName == prompt
-	// $formatName == button
-	// $formatName == data
-	
 	@if $formatName == title {&{
 		font-size: 1.5rem;
 		line-height: 1.5;
@@ -41,17 +36,17 @@
 	@if $formatName == prompt {&{
 		font-size: 1rem;
 		line-height: 1.25;
-		font-weight: 100;
+		font-weight: 300;
 		letter-spacing: 0.03em;
 		// color: $Safari-Field-color;
 		color: $Safari-Chrome-border-color;
 	}}
 	
 	@if $formatName == button {&{
-		font-size: 0.7rem;
-		font-weight: bold;
-		line-height: 1.5;
-		letter-spacing: 0.05em;
+		font-size: 0.6rem;
+		font-weight: 400;
+		line-height: 1.25;
+		letter-spacing: 0.02em;
 		text-align: center;
 		color: $button-text-color;
 	}}

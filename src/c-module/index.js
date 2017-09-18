@@ -14,9 +14,7 @@ import './style.css'
 
 // phases executed for every phase transition, in order, as defined below
 const ZONE_TRANSITION_PHASES = [
-	// {                phaseName: 'pre',        className: 'transition-pre',  durationMs:  500 },
-	{  success: true,              phaseName: 'transition', className: 'transition',      durationMs: 750 }
-	// { success: true, phaseName: 'post',       className: 'transition-post', durationMs:  300 }
+	{ success: true, phaseName: 'transition', className: 'transition', durationMs: 1500 }
 ]
 
 

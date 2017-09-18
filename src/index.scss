@@ -29,7 +29,8 @@ button,
 	border: 1px solid $button-border-color;
 	border-radius: 1.4vw;
 	margin: 0;
-	padding-bottom: 2vw;
+	
+	padding: 0 0.1em 2vw;
 	box-shadow: 0 0 1.25vw 1px rgba($button-shadow-color, 0.85);
 	background: transparent;
 	
