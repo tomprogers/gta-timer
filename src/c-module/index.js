@@ -127,8 +127,8 @@ export default class Module extends Component {
 		}
 		
 		// class with `zone-active-${zdx}` and `zone-next-${nzdx}` based on transition needs
-		let currentZdx = Object.keys(zones).indexOf(currentZoneName)
-		let nextZdx = (nextZoneName) ? Object.keys(zones).indexOf(nextZoneName) : null
+		let currentZdx = Object.keys(zones).indexOf(currentZoneName) + 1
+		let nextZdx = (nextZoneName) ? Object.keys(zones).indexOf(nextZoneName) + 1 : null
 		
 		if(inTransition && !this.transitionPhaseTimer) {
 			this.transitionPhaseTimer = setTimeout(
