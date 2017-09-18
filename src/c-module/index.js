@@ -14,9 +14,9 @@ import Zone from 'c-zone'
 
 // phases executed for every phase transition, in order, as defined below
 const ZONE_TRANSITION_PHASES = [
-	{ phaseName: 'pre',        className: 'transition-pre',  durationMs: 500  },
-	{ phaseName: 'transition', className: 'transition',      durationMs: 1000 },
-	{ phaseName: 'post',       className: 'transition-post', durationMs: 300  }
+	{                phaseName: 'pre',        className: 'transition-pre',  durationMs: 500  },
+	{                phaseName: 'transition', className: 'transition',      durationMs: 1000 },
+	{ success: true, phaseName: 'post',       className: 'transition-post', durationMs: 300  }
 ]
 
 
@@ -120,6 +120,11 @@ export default class Module extends Component {
 		let transitionPhaseConfig = (inTransition)
 			? ZONE_TRANSITION_PHASES[ transitionPhaseIndex ]
 			: null
+		
+		if(inTransition && transitionPhaseConfig.success) {
+			currentZoneName = nextZoneName
+			nextZoneName = null
+		}
 		
 		// class with `zone-active-${zdx}` and `zone-next-${nzdx}` based on transition needs
 		let currentZdx = Object.keys(zones).indexOf(currentZoneName)
