@@ -14,9 +14,9 @@ import './style.css'
 
 // phases executed for every phase transition, in order, as defined below
 const ZONE_TRANSITION_PHASES = [
-	{                phaseName: 'pre',        className: 'transition-pre',  durationMs: 500  },
-	{                phaseName: 'transition', className: 'transition',      durationMs: 1000 },
-	{ success: true, phaseName: 'post',       className: 'transition-post', durationMs: 300  }
+	// {                phaseName: 'pre',        className: 'transition-pre',  durationMs:  500 },
+	{                phaseName: 'transition', className: 'transition',      durationMs: 1000 }
+	// { success: true, phaseName: 'post',       className: 'transition-post', durationMs:  300 }
 ]
 
 
@@ -141,7 +141,6 @@ export default class Module extends Component {
 			<div className={C('Module', className, transitionPhaseConfig ? transitionPhaseConfig.className : null, `zone-${currentZoneName}`)} {...props}>
 				
 				<div className="Module-header">{title}</div>
-				<hr className="Module-stripe" />
 				
 				<div className="Module-zones"
 					data-current-zdx={currentZdx+1}

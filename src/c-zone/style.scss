@@ -9,12 +9,15 @@
 	
 	.Zone-intro {
 		display: block;
+		height: 9.25vw;
 		margin: 0;
 		padding: 1.8vw 1rem; // maybe; or maybe not rems
+		background: $Safari-Field-background;
+		z-index: -1;
 		
 		@include text(prompt);
 	}
-
+	
 	.Zone-buttons {
 		display: grid;
 		justify-content: center;

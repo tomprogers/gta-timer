@@ -2,6 +2,13 @@
 	outline: $size dotted $color;
 }
 
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
 
 @mixin flex($d:row, $j:flex-start, $a:stretch, $w:nowrap) {
 	display: flex;
