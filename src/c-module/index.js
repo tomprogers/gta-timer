@@ -55,12 +55,12 @@ export default class Module extends Component {
 	
 	
 	onClickZoneButton = (reducer, event) => {
-		const { currentZoneName } = this.state
+		const { currentZoneName, zoneState } = this.state
 		
 		// calculate the new zoneState, according to the zone-button's reducer
 		// - always provide accurate zoneState.zone value
 		// - always timestamp new zone state for benefit of module & zone logic
-		const oldZoneState = Object.assign({}, this.zoneState, { zone: currentZoneName })
+		const oldZoneState = Object.assign({}, zoneState, { zone: currentZoneName })
 		const newZoneState = Object.assign({}, reducer(oldZoneState), { zoneUpdatedAt: new Date() })
 		
 		// Detect Magic Properties in new state
