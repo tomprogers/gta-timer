@@ -65,15 +65,14 @@
 	}
 	&.zone-associate {
 		.Zone-intro {
-			// background: $Safari-Chrome-border-color;
-			background: linear-gradient(to right, transparent, $Safari-Chrome-border-color 100vw);
+			background: linear-gradient(to right, transparent 100vw, $Safari-Chrome-border-color 200vw);
 			color: $Safari-Chrome-background;
 		}
 	}
 	&.zone-quit {
 		.Zone-intro {
 			background: $App-Error-color;
-			background: linear-gradient(to right, $Safari-Chrome-border-color, $App-Error-color 100vw);
+			background: linear-gradient(to right, $Safari-Chrome-border-color 100vw, $App-Error-color 200vw);
 			color: $Safari-Chrome-background;
 		}
 	}
