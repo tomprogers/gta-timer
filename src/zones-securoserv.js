@@ -43,7 +43,7 @@ export default {
 		text: `Quitting resets this app.`,
 		buttons: {
 			r1c2: [ `Cancel`, (state) => ({ zone: state.role }) ],
-			r2c3: [ `Quit`  , (state) => ({ zone: 'default'  })  ]
+			r1c3: [ `Quit`  , (state) => ({ zone: 'default'  })  ]
 		}
 	}
 }

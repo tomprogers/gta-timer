@@ -127,8 +127,8 @@ export default class Module extends Component {
 		}
 		
 		// class with `zone-active-${zdx}` and `zone-next-${nzdx}` based on transition needs
-		let currentZdx = Object.keys(zones).indexOf(currentZoneName) + 1
-		let nextZdx = (nextZoneName) ? Object.keys(zones).indexOf(nextZoneName) + 1 : null
+		let currentZdx = Object.keys(zones).indexOf(currentZoneName)
+		let nextZdx = (nextZoneName) ? Object.keys(zones).indexOf(nextZoneName) : null
 		
 		if(inTransition && !this.transitionPhaseTimer) {
 			this.transitionPhaseTimer = setTimeout(
@@ -144,8 +144,8 @@ export default class Module extends Component {
 				<hr className="Module-stripe" />
 				
 				<div className="Module-zones"
-					data-current-zdx={currentZdx}
-					data-next-zdx={nextZdx}
+					data-current-zdx={currentZdx+1}
+					data-next-zdx={nextZdx+1}
 				>
 					{Object.values(zones)
 					.map(({ text , stripe , buttons }, i) => {
