@@ -16,7 +16,7 @@ import Zone from 'c-zone'
 const ZONE_TRANSITION_PHASES = [
 	{ phaseName: 'pre',        className: 'transition-pre',  durationMs: 500  },
 	{ phaseName: 'transition', className: 'transition',      durationMs: 1000 },
-	{ phaseName: 'post',       className: 'transition-post', durationMs: 500  }
+	{ phaseName: 'post',       className: 'transition-post', durationMs: 300  }
 ]
 
 
@@ -54,7 +54,7 @@ export default class Module extends Component {
 	}
 	
 	
-	onClickZoneButton = (event, reducer) => {
+	onClickZoneButton = (reducer, event) => {
 		const { currentZoneName } = this.state
 		
 		// calculate the new zoneState, according to the zone-button's reducer
@@ -71,9 +71,10 @@ export default class Module extends Component {
 		this.setState({
 			nextZoneName: (zoneTransitionRequested) ? newZoneState.zone : null,
 			inTransition: Boolean(zoneTransitionRequested),
-			transitionPhaseIndex: null,
+			transitionPhaseIndex: (zoneTransitionRequested) ? 0 : null,
 			zoneState: newZoneState
 		})
+		this.forceUpdate()
 	}
 	
 	
@@ -81,11 +82,21 @@ export default class Module extends Component {
 		clearTimeout(this.transitionPhaseTimer)
 		this.transitionPhaseTimer = null
 		
-		let nextTransitionPhaseIndex = this.transitionPhaseIndex + 1
+		let { nextZoneName, transitionPhaseIndex } = this.state
+		let nextTransitionPhaseIndex = transitionPhaseIndex + 1
+		
 		if(ZONE_TRANSITION_PHASES[nextTransitionPhaseIndex]) {
+			// there are more phases; proceed to the next
 			this.setState({ transitionPhaseIndex: nextTransitionPhaseIndex })
+		
 		} else {
-			this.setState({ inTransition: false, transitionPhaseIndex: null })
+			// there are no more phases; set to non-transition state
+			this.setState({
+				currentZoneName: nextZoneName,
+				nextZoneName: null,
+				inTransition: false,
+				transitionPhaseIndex: null
+			})
 		}
 	}
 	
@@ -106,20 +117,23 @@ export default class Module extends Component {
 			zoneState
 		} = this.state
 		
+		let transitionPhaseConfig = (inTransition)
+			? ZONE_TRANSITION_PHASES[ transitionPhaseIndex ]
+			: null
+		
 		// class with `zone-active-${zdx}` and `zone-next-${nzdx}` based on transition needs
 		let currentZdx = Object.keys(zones).indexOf(currentZoneName)
 		let nextZdx = (nextZoneName) ? Object.keys(zones).indexOf(nextZoneName) : null
 		
-		let transitionPhaseClassName = (inTransition)
-			? ZONE_TRANSITION_PHASES[ transitionPhaseIndex ].className
-			: ''
-		
 		if(inTransition && !this.transitionPhaseTimer) {
-			this.transitionPhaseTimer = setTimeout(this.advanceTransitionPhase, ZONE_TRANSITION_PHASES[ transitionPhaseIndex ].durationMs)
+			this.transitionPhaseTimer = setTimeout(
+				this.advanceTransitionPhase.bind(this),
+				transitionPhaseConfig.durationMs
+			)
 		}
 		
 		return (
-			<div className={C('Module', className, transitionPhaseClassName)} {...props}>
+			<div className={C('Module', className, transitionPhaseConfig ? transitionPhaseConfig.className : null, `zone-${currentZoneName}`)} {...props}>
 				
 				<div className="Module-header">{title}</div>
 				<hr className="Module-stripe" />
@@ -133,7 +147,7 @@ export default class Module extends Component {
 						let zoneName = Object.keys(zones)[i]
 						
 						return (
-							<Zone key={i} className={C(`zone-${zoneName}`)}
+							<Zone key={i} className={C(`zone-${zoneName}`, { 'Zone-active': (i===currentZdx) })}
 								introText={text}
 								buttonMap={
 									// transform zonefile button format into Zone.buttonMap format
@@ -142,7 +156,7 @@ export default class Module extends Component {
 									Object.keys(buttons)
 									.reduce((map, buttonPositionName, b) => {
 										const [ text , buttonReducer ] = buttons[buttonPositionName]
-										const onClick = (event) => this.onClickZoneButton.bind(this, event, buttonReducer)
+										const onClick = this.onClickZoneButton.bind(this, buttonReducer)
 										return Object.assign(map, { [buttonPositionName]: { text, onClick } })
 									}, {})
 								}
