@@ -21,25 +21,25 @@
 	
 	.Module-zones {
 		display: block;
-		width: 100%;
+		position: relative;
+		width: auto;
 		white-space: nowrap;
-		overflow: hidden;
 		
 		.Zone {
 			display: inline-block;
+			width: 100%;
+			white-space: normal;
 			margin: 0;
 			transform: scale(1);
-			
-			transition: transform 0.2s 0.8s,
-				margin 0.6s;
+			transition: transform 0.25s ease-in,
+				margin 0.5s ease-in 0.25s;
 		}
 		
 		.Zone + .Zone {
 			margin-left: 100vw;
 		}
 		
-		.Zone-active {
-		}
+		.Zone-active {}
 	}
 	
 	

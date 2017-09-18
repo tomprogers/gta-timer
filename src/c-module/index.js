@@ -15,7 +15,7 @@ import './style.css'
 // phases executed for every phase transition, in order, as defined below
 const ZONE_TRANSITION_PHASES = [
 	// {                phaseName: 'pre',        className: 'transition-pre',  durationMs:  500 },
-	{                phaseName: 'transition', className: 'transition',      durationMs: 1000 }
+	{  success: true,              phaseName: 'transition', className: 'transition',      durationMs: 750 }
 	// { success: true, phaseName: 'post',       className: 'transition-post', durationMs:  300 }
 ]
 
@@ -102,6 +102,7 @@ export default class Module extends Component {
 	
 	
 	render() {
+		console.log(`Module.render`)
 		let {
 			className,
 			title,
