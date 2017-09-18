@@ -3,7 +3,20 @@
 
 
 .Module {
+	div.Module-header {}
+	hr.Module-stripe {}
+	div.Module-zones {
+		div.Zone {}
+		div.Zone-active {}
+	}
 	
+	// zone transitions
+	&.transition-pre {}
+	&.transition {}
+	&.transition-post {}
 	
-	
+	.Module-zones {
+		&[data-current-zdx="1"] {}
+		&[data-next-zdx="3"] {}
+	}
 }

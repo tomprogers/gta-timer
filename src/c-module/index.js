@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import C from 'classnames'
 
 import Zone from 'c-zone'
-// import './style.css'
+import './style.css'
 
 /**
  * <Module> implements the zone state lifecycle, and manages transitions between zones
