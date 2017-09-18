@@ -4,13 +4,16 @@
 
 * { box-sizing: border-box; }
 
-body {
-	margin: 0;
-	padding: 0;
+html {
 	font-family: "Helvetica Neue";
 	font-size: 5vw;
 	font-weight: normal;
 	font-color: $Safari-Chrome-border-color;
+}
+
+body {
+	margin: 0;
+	padding: 0;
 }
 
 button,
@@ -18,19 +21,20 @@ button,
 	@include flex(column, flex-end);
 	
 	display: flex;
+	width: 22.5vw;
+	height: 17.25vw;
+	outline: 0;
 	border: 1px solid $button-border-color;
 	border-radius: 1.4vw;
 	margin: 0;
 	padding-bottom: 2vw;
+	box-shadow: 0 0 1.25vw 1px rgba($button-shadow-color, 0.85);
+	background: transparent;
+	
+	cursor: pointer;
 	
 	font: inherit;
-	font-size: 0.6em;
-	line-height: 1.5;
-	font-weight: bold;
-	background: transparent;
-	color: $button-text-color;
-	box-shadow: 0 0 1.25vw 1px rgba($button-shadow-color, 0.85);
-	outline: 0;
+	@include text(button);
 	
 	// pushes the text to the bottom
 	&::before {
