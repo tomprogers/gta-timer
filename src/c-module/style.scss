@@ -3,10 +3,33 @@
 
 
 .Module {
-	div.Module-header {}
-	hr.Module-stripe {}
+	@include flex(column);
+	
+	margin: 7.5vw;
+	padding: 0;
+	border: 1px solid $Safari-Chrome-border-color;
+	border-radius: 2vw;
+	
+	div.Module-header {
+		@include flex(row, space-between, center);
+		min-height: 15vw;
+		padding-left: 4.25vw;
+		padding-right: 4.25vw;
+		@include text(title);
+	}
+	
+	hr.Module-stripe {
+		@include debug(green);
+	}
+	
 	div.Module-zones {
-		div.Zone {}
+		// height: 100vw; // fix this
+		overflow: hidden;
+		
+		div.Zone {
+			@include debug;
+
+		}
 		div.Zone-active {}
 	}
 	

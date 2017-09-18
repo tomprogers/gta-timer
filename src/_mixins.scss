@@ -15,3 +15,44 @@
 @function strip-unit($value) {
 	@return $value / ($value * 0 + 1);
 }
+
+
+// still unused
+@mixin text($formatName:prompt) {
+	// $formatName == title
+	// $formatName == prompt
+	// $formatName == button
+	// $formatName == data
+	
+	@if $formatName == title {&{
+		font-size: 1.5rem;
+		line-height: 1.5;
+		font-weight: bold;
+		color: darken($Safari-Chrome-border-color, 10);
+	}}
+	
+	@if $formatName == prompt {&{
+		font-size: 1rem;
+		line-height: 1.25;
+		font-weight: 100;
+		letter-spacing: 0.03em;
+		// color: $Safari-Field-color;
+		color: $Safari-Chrome-border-color;
+	}}
+	
+	@if $formatName == button {&{
+		font-size: 0.7rem;
+		font-weight: bold;
+		line-height: 1.5;
+		letter-spacing: 0.05em;
+		text-align: center;
+		color: $button-text-color;
+	}}
+	
+	@if $formatName == data {&{
+		font-size: 0.6rem;
+		line-height: 1.25;
+		font-weight: bold;
+		color: $Safari-Chrome-border-color;
+	}}
+}

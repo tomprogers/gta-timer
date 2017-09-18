@@ -42,8 +42,8 @@ export default {
 		// data2: (state) => `$${state.payValue}`,
 		text: `Quitting resets this app.`,
 		buttons: {
-			r1c2: [ `Cancel`, (state) => state ],
-			r2c3: [ `Quit`  , (state) => ({})  ]
+			r1c2: [ `Cancel`, (state) => ({ zone: state.role }) ],
+			r2c3: [ `Quit`  , (state) => ({ zone: 'default'  })  ]
 		}
 	}
 }

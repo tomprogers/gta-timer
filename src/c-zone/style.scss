@@ -6,15 +6,13 @@
 	@include flex(column);
 	width: 85vw;
 	margin: 15vw auto;
-	line-height: 1.25;
 	
 	.Zone-intro {
 		display: block;
 		margin: 0;
 		padding: 1.8vw 1rem; // maybe; or maybe not rems
-		letter-spacing: 0.03em;
-		font-weight: 100;
-		color: $Safari-Chrome-border-color;
+		
+		@include text(prompt);
 	}
 
 	.Zone-buttons {
@@ -32,8 +30,9 @@
 		
 		button,
 		.button {
-			text-align: center;
-			letter-spacing: 0.05em;
+			width: auto;
+			height: auto;
+			@include text(button);
 		}
 		
 		// single-space buttons
