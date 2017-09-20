@@ -12,9 +12,19 @@ html {
 }
 
 body {
+	min-height: 100vh;
 	margin: 0;
 	padding: 0;
-	background: $Safari-Chrome-background;
+	background-image:
+		linear-gradient(to bottom, rgba($Safari-Chrome-background, 0), rgba($Safari-Chrome-background, 0.75)),
+		url('/buzzard-humane-labs.jpg'),
+		linear-gradient(to bottom, $Safari-Chrome-background, #f0f4f8)
+		;
+	
+	background-size: contain;
+	background-position: bottom;
+	background-repeat: no-repeat;
+	
 	color: $Safari-Field-color;
 }
 
