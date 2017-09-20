@@ -62,7 +62,7 @@ export default class Module extends Component {
 		const newZoneState = Object.assign({}, reducer(oldZoneState), { zoneUpdatedAt: new Date() })
 		
 		// Detect Magic Properties in new state
-		// DMP: zone transition signaled by changing 'zone'
+		// DMP: zone transition signaled by changing .zone
 		let zoneTransitionRequested = (newZoneState.zone !== currentZoneName)
 		
 		// update state and trigger re-render
@@ -72,6 +72,7 @@ export default class Module extends Component {
 			transitionPhaseIndex: (zoneTransitionRequested) ? 0 : null,
 			zoneState: newZoneState
 		})
+		
 		this.forceUpdate()
 	}
 	
@@ -100,7 +101,6 @@ export default class Module extends Component {
 	
 	
 	render() {
-		console.log(`Module.render`)
 		let {
 			className,
 			title,

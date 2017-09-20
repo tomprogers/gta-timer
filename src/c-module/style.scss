@@ -50,9 +50,9 @@
 		display: inline-block;
 		width: 85vw;
 		height: 56.25vw;
-		white-space: normal;
 		margin: 0;
 		transform-origin: 50% 50%;
+		white-space: normal;
 
 		transition: transform 0.7s ease-in-out,
 			margin 1.2s ease-in-out 0.2s;
@@ -60,7 +60,9 @@
 	
 	// zone transitions
 	&.transition {
-		.Module-zones {}
+		.Module-zones {
+			
+		}
 		.Zone {
 			transform: translateZ(-200vw);
 		}
