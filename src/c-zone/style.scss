@@ -5,6 +5,7 @@
 .Zone {
 	@include flex(column);
 	width: 85vw;
+	height: 56.25vw;
 	margin: 15vw auto;
 	
 	.Zone-intro {
@@ -24,8 +25,8 @@
 		align-content: top;
 		justify-items: stretch;
 		align-items: stretch;
+		
 		min-height: 47vw;
-		margin: 0 auto;
 		padding: 4.24vw 0;
 		
 		grid-template-columns: repeat(3, 22.5vw);
@@ -56,6 +57,8 @@
 
 
 // Zone-specific
+// I hate that this even exists; there must be a better way
+// maybe <Zone titleGradient={[left-stop,right-stop]} /> ?
 .Zone {
 	&.zone-default {
 		.Zone-intro {

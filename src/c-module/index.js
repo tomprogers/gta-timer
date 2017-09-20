@@ -145,27 +145,29 @@ export default class Module extends Component {
 					data-current-zdx={currentZdx+1}
 					data-next-zdx={nextZdx+1}
 				>
-					{Object.values(zones)
-					.map(({ text , stripe , buttons }, i) => {
-						let zoneName = Object.keys(zones)[i]
-						
-						return (
-							<Zone key={i} className={C(`zone-${zoneName}`, { 'Zone-active': (i===currentZdx) })}
-								introText={text}
-								buttonMap={
-									// transform zonefile button format into Zone.buttonMap format
-									// and incorporate button reducers into event handling
-									// this is 70% of the magic of <Module>
-									Object.keys(buttons)
-									.reduce((map, buttonPositionName, b) => {
-										const [ text , buttonReducer ] = buttons[buttonPositionName]
-										const onClick = this.onClickZoneButton.bind(this, buttonReducer)
-										return Object.assign(map, { [buttonPositionName]: { text, onClick } })
-									}, {})
-								}
-							/>
-						)
-					})}
+					<div className="Module-platter">
+						{Object.values(zones)
+						.map(({ text , stripe , buttons }, i) => {
+							let zoneName = Object.keys(zones)[i]
+							
+							return (
+								<Zone key={i} className={C(`zone-${zoneName}`, { 'Zone-active': (i===currentZdx) })}
+									introText={text}
+									buttonMap={
+										// transform zonefile button format into Zone.buttonMap format
+										// and incorporate button reducers into event handling
+										// this is 70% of the magic of <Module>
+										Object.keys(buttons)
+										.reduce((map, buttonPositionName, b) => {
+											const [ text , buttonReducer ] = buttons[buttonPositionName]
+											const onClick = this.onClickZoneButton.bind(this, buttonReducer)
+											return Object.assign(map, { [buttonPositionName]: { text, onClick } })
+										}, {})
+									}
+								/>
+							)
+						})}
+					</div>
 				</div>
 				
 			</div>
