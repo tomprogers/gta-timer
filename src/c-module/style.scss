@@ -21,42 +21,48 @@
 	
 	.Module-zones {
 		display: block;
-		width: auto;
+		width: 85vw;
+		height: 56.25vw;
 		white-space: nowrap;
 		overflow: hidden;
 		perspective: 100vw;
 		
-		.Zone + .Zone {
-			margin-left: 200vw;
-			
-			.Zone-intro {
-				margin-left: -200vw;
-				width: 285vw;
-				
-				&::before {
-					content:  '';
-					display: inline-block;
-					width: 200vw;
-				}
-			}
-		}
-		
-		&[data-current-zdx="1"] > .Zone:nth-of-type(1) { margin-left: 0; }
-		&[data-current-zdx="2"] > .Zone:nth-of-type(1) { margin-left: -285vw; }
-		&[data-current-zdx="3"] > .Zone:nth-of-type(1) { margin-left: -570vw; }
+		&[data-current-zdx="1"] > .Zone:nth-of-type(1) { margin-left: -127.5vw; }
+		&[data-current-zdx="2"] > .Zone:nth-of-type(1) { margin-left: -467.5vw; }
+		&[data-current-zdx="3"] > .Zone:nth-of-type(1) { margin-left: -807.5vw; }
 	}
 	
 	.Zone {
+		@include debug(black);
+		background: orange;
 		display: inline-block;
-		width: 85vw;
-		height: 56.25vw;
+		
+		width: 340vw;
+		height: 168.75vw;
 		margin: 0;
-		transform-origin: 50% 50%;
+		padding: 0 127.5vw 56.25vw ;
+		
+		
 		white-space: normal;
+		transform-origin: 50% 50%;
 
 		transition: transform 0.7s ease-in-out,
 			margin 1.2s ease-in-out 0.2s;
+		transform: translateZ(-600vw);
 	}
+	
+	.Zone-intro {
+		margin-left: -127.5vw;
+		width: 340vw;
+		
+		&::before {
+			content:  '';
+			display: inline-block;
+			width: 127.5vw;
+		}
+	}
+	
+	
 	
 	// zone transitions
 	&.transition {
