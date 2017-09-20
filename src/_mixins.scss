@@ -35,7 +35,7 @@
 	}}
 	
 	@if $formatName == prompt {&{
-		font-size: 1rem;
+		font-size: 0.9rem;
 		line-height: 1.25;
 		font-weight: 300;
 		letter-spacing: 0.03em;
@@ -44,7 +44,7 @@
 	
 	@if $formatName == button {&{
 		font-size: 0.6rem;
-		font-weight: 400;
+		font-weight: bold;
 		line-height: 1.25;
 		letter-spacing: 0.02em;
 		text-align: center;

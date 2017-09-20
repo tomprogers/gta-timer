@@ -57,3 +57,18 @@ button,
 	}
 }
 
+.Footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	padding: 1em;
+	@include text(button);
+	font-weight: normal !important;
+	color: $Safari-Chrome-border-color !important;
+	text-shadow: 0px 0px 4px #f8f8f8, 0px 0px 4px #f8f8f8;
+	
+	
+	// @include flex(column, flex-end, center);
+}

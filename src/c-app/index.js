@@ -18,6 +18,11 @@ export default class App extends Component {
 					zones={SecuroServ_Zones}
 				/>
 				
+				
+				<div className="Footer">
+					&copy; Tom Rogers 2017
+				</div>
+				
 			</div>
 		)
 	}

@@ -72,6 +72,7 @@
 			color: inherit;
 		}
 	}
+	
 	&.zone-associate {
 		.Zone-intro {
 			background: linear-gradient(to right,
@@ -82,7 +83,15 @@
 			);
 			color: $Safari-Chrome-background;
 		}
+		
+		.button {
+			// &.r1c1 { border-color: #db2b2d; color: #db2b2d; }
+			// &.c2 { border-color: $GTA-cash-delta-green; color: $GTA-cash-delta-green; }
+			// &.r1c3 { border-color: $GTA-cash-delta-green; color: $GTA-cash-delta-green; }
+			// &.r2c3 { border-color: #db2b2d; color: #db2b2d; }
+		}
 	}
+	
 	&.zone-quit {
 		.Zone-intro {
 			background: linear-gradient(to right,
@@ -93,5 +102,10 @@
 			);
 			color: $Safari-Chrome-background;
 		}
+		
+		.button {
+			&.r1c3 { border-color: #db2b2d; color: #db2b2d; }
+		}
+		
 	}
 }
