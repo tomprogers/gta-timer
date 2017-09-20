@@ -59,6 +59,12 @@
 // Zone-specific
 // I hate that this even exists; there must be a better way
 // maybe <Zone titleGradient={[left-stop,right-stop]} /> ?
+// 
+// 0.0zw |   0.0vw
+// 1.5zw | 127.5vw
+// 2.5zw | 212.5vw
+// 4.0zw | 340.0vw
+
 .Zone {
 	&.zone-default {
 		.Zone-intro {
@@ -68,14 +74,23 @@
 	}
 	&.zone-associate {
 		.Zone-intro {
-			background: linear-gradient(to right, transparent 100vw, $Safari-Chrome-border-color 200vw);
+			background: linear-gradient(to right,
+				transparent,
+				$Safari-Chrome-border-color 127.5vw,
+				$Safari-Chrome-border-color 212.5vw,
+				$Safari-Chrome-border-color
+			);
 			color: $Safari-Chrome-background;
 		}
 	}
 	&.zone-quit {
 		.Zone-intro {
-			background: $App-Error-color;
-			background: linear-gradient(to right, $Safari-Chrome-border-color 100vw, $App-Error-color 200vw);
+			background: linear-gradient(to right,
+				$Safari-Chrome-border-color,
+				$App-Error-color 127.5vw,
+				$App-Error-color 212.5vw,
+				$Safari-Chrome-border-color
+			);
 			color: $Safari-Chrome-background;
 		}
 	}
