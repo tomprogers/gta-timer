@@ -5,6 +5,7 @@
 .Zone {
 	@include flex(column);
 	width: 85vw;
+	height: 56.25vw;
 	margin: 15vw auto;
 	
 	.Zone-intro {
@@ -24,8 +25,8 @@
 		align-content: top;
 		justify-items: stretch;
 		align-items: stretch;
+		
 		min-height: 47vw;
-		margin: 0 auto;
 		padding: 4.24vw 0;
 		
 		grid-template-columns: repeat(3, 22.5vw);
