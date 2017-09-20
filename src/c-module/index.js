@@ -71,7 +71,7 @@ export default class Module extends Component {
 			this.zoneRefresh = null
 			
 			let refreshInt = parseInt(newZoneState.refresh)
-			if(!isNaN(refreshInt)) this.zoneRefresh = setInterval(this.forceUpdate, refreshInt)
+			if(!isNaN(refreshInt)) this.zoneRefresh = setInterval(this.forceUpdate.bind(this), refreshInt)
 		}
 		
 		// update state and trigger re-render
@@ -145,10 +145,34 @@ export default class Module extends Component {
 			)
 		}
 		
+		let zoneData1, zoneData2
+		
+		try {
+			zoneData1 = (typeof zones[currentZoneName].data1 === 'function')
+				? zones[currentZoneName].data1(zoneState)
+				: null
+		} catch(e) {}
+		
+		try {
+			zoneData2 = (typeof zones[currentZoneName].data2 === 'function')
+				? zones[currentZoneName].data2(zoneState)
+				: null
+		} catch(e) {}
+		
 		return (
 			<div className={C('Module', className, transitionPhaseConfig ? transitionPhaseConfig.className : null, `zone-${currentZoneName}`)} {...props}>
 				
-				<div className="Module-header">{title}</div>
+				<div className="Module-header">
+					
+					{title}
+					
+					<div className="Module-data">
+						<span className="Module-data1">{zoneData1}</span>
+						<span className="Module-data2">{zoneData2}</span>
+					</div>
+					
+					
+				</div>
 				
 				<div className="Module-zones"
 					data-current-zdx={currentZdx+1}

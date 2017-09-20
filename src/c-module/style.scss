@@ -19,6 +19,15 @@
 		@include text(title);
 	}
 	
+	.Module-data {
+		@include flex(column);
+		font-size: 0.6rem;
+		font-weight: 200;
+		text-align: right;
+	}
+	
+	
+	
 	.Module-zones {
 		display: block;
 		width: 85vw;
