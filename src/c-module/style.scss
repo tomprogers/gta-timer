@@ -37,7 +37,8 @@
 		position: absolute;
 		top: -56.25vw;
 		left: -127.5vw;
-		display: block;
+		
+		@include flex(row);
 		height: 56.25vw;
 		transform-origin: 50% 50%;
 		
