@@ -1,4 +1,4 @@
-const SecuroServ_Associate_Pay_IntervalMS = 1 * 60 * 1000 // GTA pays Associates every 15 minutes
+const SecuroServ_Associate_Pay_IntervalMS = 15 * 60 * 1000 // GTA pays Associates every 15 minutes
 
 function getTimeUntilPayout(refTime) {
 	let diffMs = (new Date().getTime() - new Date(refTime).getTime()) % SecuroServ_Associate_Pay_IntervalMS
