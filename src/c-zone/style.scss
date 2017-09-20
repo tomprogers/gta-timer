@@ -57,6 +57,8 @@
 
 
 // Zone-specific
+// I hate that this even exists; there must be a better way
+// maybe <Zone titleGradient={[left-stop,right-stop]} /> ?
 .Zone {
 	&.zone-default {
 		.Zone-intro {
