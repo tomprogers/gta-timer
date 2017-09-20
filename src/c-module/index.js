@@ -7,8 +7,7 @@ import './style.css'
 /**
  * <Module> implements the zone state lifecycle, and manages transitions between zones
  * - .zone on zoneState is used to control current zone
- * - .timers:true on zoneState triggers 60Hz update cycle
- * - adds .transition-pre, .transition, .transition-post classnames to div.Module
+ * - .refresh:num on zoneState triggers update cycle
  * - sets data-current-zdx, data-next-zdx on div.Module > div.Module-zones
  */
 
@@ -23,7 +22,7 @@ export default class Module extends Component {
 		super(props)
 		
 		this.transitionPhaseTimer = null
-		this.zoneHeartbeat = null
+		this.zoneRefresh = null
 		
 		this.state = {
 			currentZoneName: 'default',
@@ -34,6 +33,7 @@ export default class Module extends Component {
 			
 			zoneState: {
 				zone: 'default',
+				refresh: null,
 				zoneEnteredAt: new Date(),
 				zoneUpdatedAt: null
 			}
@@ -48,7 +48,7 @@ export default class Module extends Component {
 	
 	clearTimers = (timers) => {
 		clearTimeout(this.transitionPhaseTimer)
-		clearInterval(this.zoneHeartbeat)
+		clearInterval(this.zoneRefresh)
 	}
 	
 	
@@ -64,6 +64,15 @@ export default class Module extends Component {
 		// Detect Magic Properties in new state
 		// DMP: zone transition signaled by changing .zone
 		let zoneTransitionRequested = (newZoneState.zone !== currentZoneName)
+		
+		// DMP: scheduled updates via refresh: Number(refreshIntervalInMs)
+		if(newZoneState.refresh !== oldZoneState.refresh) {
+			clearInterval(this.zoneRefresh)
+			this.zoneRefresh = null
+			
+			let refreshInt = parseInt(newZoneState.refresh)
+			if(!isNaN(refreshInt)) this.zoneRefresh = setInterval(this.forceUpdate.bind(this), refreshInt)
+		}
 		
 		// update state and trigger re-render
 		this.setState({
@@ -136,10 +145,34 @@ export default class Module extends Component {
 			)
 		}
 		
+		let zoneData1, zoneData2
+		
+		try {
+			zoneData1 = (typeof zones[currentZoneName].data1 === 'function')
+				? zones[currentZoneName].data1(zoneState)
+				: null
+		} catch(e) {}
+		
+		try {
+			zoneData2 = (typeof zones[currentZoneName].data2 === 'function')
+				? zones[currentZoneName].data2(zoneState)
+				: null
+		} catch(e) {}
+		
 		return (
 			<div className={C('Module', className, transitionPhaseConfig ? transitionPhaseConfig.className : null, `zone-${currentZoneName}`)} {...props}>
 				
-				<div className="Module-header">{title}</div>
+				<div className="Module-header">
+					
+					{title}
+					
+					<div className="Module-data">
+						<span className="Module-data1">{zoneData1}</span>
+						<span className="Module-data2">{zoneData2}</span>
+					</div>
+					
+					
+				</div>
 				
 				<div className="Module-zones"
 					data-current-zdx={currentZdx+1}
