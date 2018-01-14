@@ -1,3 +1,8 @@
+@import 'colors';
+@import 'mixins';
+
+
 .App {
-	
+	// min-height: 90vh;
+	// @include flex(column, flex-start);
 }

@@ -19,9 +19,6 @@ export default class App extends Component {
 				/>
 				
 				
-				<div className="Footer">
-					&copy; Tom Rogers 2017
-				</div>
 				
 			</div>
 		)
